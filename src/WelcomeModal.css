@@ -1,0 +1,119 @@
+/* WelcomeModal.css */
+/* Shared modal styles - clean and professional */
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal {
+    width: 100%;
+    max-width: 420px;
+    margin: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+}
+
+.modal__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-bottom: 1px solid #E5E7EB;
+}
+
+.modal__header h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #111827;
+}
+
+.modal__close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: none;
+    border: none;
+    border-radius: 4px;
+    color: #6B7280;
+    cursor: pointer;
+}
+
+.modal__close:hover {
+    background: #F3F4F6;
+    color: #111827;
+}
+
+.modal__body {
+    padding: 20px;
+}
+
+.modal__body p {
+    margin: 0 0 16px;
+    font-size: 14px;
+    color: #4B5563;
+    line-height: 1.5;
+}
+
+.modal__list {
+    margin: 0 0 16px;
+    padding-left: 20px;
+}
+
+.modal__list li {
+    font-size: 13px;
+    color: #4B5563;
+    line-height: 1.8;
+}
+
+.modal__list kbd {
+    display: inline-block;
+    padding: 1px 5px;
+    font-size: 11px;
+    font-family: inherit;
+    color: #374151;
+    background: #F3F4F6;
+    border: 1px solid #D1D5DB;
+    border-radius: 3px;
+}
+
+.modal__note {
+    padding: 12px;
+    background: #FEF9C3;
+    border-radius: 6px;
+    font-size: 13px !important;
+    color: #854D0E !important;
+    margin-bottom: 0 !important;
+}
+
+.modal__footer {
+    padding: 16px 20px;
+    border-top: 1px solid #E5E7EB;
+    text-align: right;
+}
+
+.modal__btn {
+    padding: 8px 20px;
+    background: #111827;
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.modal__btn:hover {
+    background: #1F2937;
+}

@@ -1,0 +1,157 @@
+/* ResultModal.css */
+/* Styles for the result modal - Light Theme (No hover/shadow) */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    min-width: 380px;
+    max-width: 90vw;
+    text-align: center;
+    position: relative;
+}
+
+.modal__close {
+    position: absolute;
+    top: var(--space-md);
+    right: var(--space-md);
+    background: none;
+    border: none;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    padding: var(--space-xs);
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-sm);
+}
+
+.modal__icon {
+    margin-bottom: var(--space-md);
+    display: flex;
+    justify-content: center;
+}
+
+.modal__icon--success {
+    color: var(--color-success);
+}
+
+.modal__icon--error {
+    color: var(--color-danger);
+}
+
+.modal__title {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-lg);
+}
+
+.modal__message {
+    color: var(--color-danger);
+    margin-bottom: var(--space-md);
+}
+
+.modal__hint {
+    color: var(--color-text-muted);
+    font-size: 13px;
+    margin-bottom: var(--space-lg);
+}
+
+.modal__hint code {
+    display: block;
+    background: var(--color-bg-tertiary);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-sm);
+    margin-top: var(--space-sm);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--color-primary);
+    border: 1px solid var(--color-border);
+}
+
+.modal__stats {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-xl);
+    margin-bottom: var(--space-lg);
+}
+
+.modal__stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xs);
+}
+
+.modal__stat-value {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+.modal__stat-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color-text-muted);
+}
+
+.text-success {
+    color: var(--color-success) !important;
+}
+
+.text-danger {
+    color: var(--color-danger) !important;
+}
+
+.modal__dag-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    padding: var(--space-md);
+    border-radius: var(--radius-md);
+    font-size: 14px;
+    margin-bottom: var(--space-lg);
+}
+
+.modal__dag-status--valid {
+    background: var(--color-success-light);
+    border: 1px solid var(--color-success);
+    color: var(--color-success);
+}
+
+.modal__dag-status--invalid {
+    background: var(--color-danger-light);
+    border: 1px solid var(--color-danger);
+    color: var(--color-danger);
+}
+
+.modal__button {
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    padding: var(--space-sm) var(--space-xl);
+    border-radius: var(--radius-md);
+    font-size: 14px;
+    font-weight: 500;
+    font-family: var(--font-family);
+    cursor: pointer;
+}

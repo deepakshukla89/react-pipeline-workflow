@@ -1,0 +1,116 @@
+/* ShortcutsHelp.css */
+/* Floating help button and shortcuts popover - minimal shadow */
+
+.shortcuts-help-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 50%;
+    color: #64748B;
+    cursor: pointer;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+    z-index: 100;
+}
+
+.shortcuts-help-btn:hover {
+    color: #1E293B;
+}
+
+.shortcuts-popover {
+    position: fixed;
+    bottom: 70px;
+    right: 24px;
+    width: 280px;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    z-index: 200;
+    overflow: hidden;
+    animation: popoverSlide 0.2s ease;
+}
+
+@keyframes popoverSlide {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.shortcuts-popover__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background: #F8FAFC;
+    border-bottom: 1px solid #E2E8F0;
+    font-size: 13px;
+    font-weight: 600;
+    color: #1E293B;
+}
+
+.shortcuts-popover__close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background: transparent;
+    border: none;
+    border-radius: 4px;
+    color: #64748B;
+    cursor: pointer;
+}
+
+.shortcuts-popover__close:hover {
+    background: #E2E8F0;
+    color: #1E293B;
+}
+
+.shortcuts-popover__list {
+    padding: 8px;
+    max-height: 320px;
+    overflow-y: auto;
+}
+
+.shortcuts-popover__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 10px;
+    border-radius: 6px;
+}
+
+.shortcuts-popover__item:hover {
+    background: #F8FAFC;
+}
+
+.shortcuts-popover__action {
+    font-size: 12px;
+    color: #475569;
+}
+
+.shortcuts-popover__key {
+    font-size: 11px;
+    font-weight: 500;
+    font-family: inherit;
+    color: #64748B;
+    padding: 3px 8px;
+    background: #F1F5F9;
+    border: 1px solid #E2E8F0;
+    border-radius: 4px;
+}

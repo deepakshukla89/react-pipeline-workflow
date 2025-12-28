@@ -1,0 +1,300 @@
+/* BaseNode.css */
+/* Base styles for all pipeline nodes - Light Theme */
+
+.base-node {
+    min-width: 220px;
+    min-height: 80px;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    font-family: var(--font-family);
+    overflow: visible;
+}
+
+/* Emoji Node Styles */
+.emoji-node__display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 0;
+}
+
+.emoji-node__emoji {
+    font-size: 48px;
+    line-height: 1;
+}
+
+/* Node Header */
+.base-node__header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm) var(--space-md);
+    background: var(--color-bg-tertiary);
+    border-bottom: 1px solid var(--color-border);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--color-text-primary);
+}
+
+.base-node__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+}
+
+.base-node__icon svg {
+    width: 16px;
+    height: 16px;
+}
+
+.base-node__title {
+    flex: 1;
+}
+
+/* Node Content Area */
+.base-node__content {
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+/* Form Field Styling */
+.base-node__field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.base-node__label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.base-node__input,
+.base-node__textarea {
+    background: var(--color-bg-tertiary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: var(--space-sm) var(--space-md);
+    font-size: 13px;
+    font-family: var(--font-family);
+    color: var(--color-text-primary);
+    outline: none;
+}
+
+.base-node__textarea {
+    resize: none;
+    min-height: 60px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+}
+
+/* Handle Styling */
+.base-node__handle {
+    width: 12px !important;
+    height: 12px !important;
+    background: var(--color-primary) !important;
+    border: 2px solid var(--color-bg-secondary) !important;
+}
+
+.base-node__handle--input {
+    background: var(--color-node-input) !important;
+}
+
+.base-node__handle--output {
+    background: var(--color-node-output) !important;
+}
+
+/* ========================================
+   NODE TYPE VARIANTS
+   - Border color matches header separator
+   - Focus color matches node type color
+   ======================================== */
+
+/* INPUT NODE - Green */
+.base-node--input {
+    border-color: var(--color-node-input);
+    --node-focus-color: #10B981;
+}
+
+.base-node--input .base-node__header {
+    background: var(--color-success-light);
+    border-bottom-color: var(--color-node-input);
+}
+
+.base-node--input .base-node__icon {
+    color: var(--color-node-input);
+}
+
+.base-node--input .base-node__input:focus,
+.base-node--input .base-node__textarea:focus {
+    border-color: var(--color-node-input);
+}
+
+/* OUTPUT NODE - Red */
+.base-node--output {
+    border-color: var(--color-node-output);
+    --node-focus-color: #EF4444;
+}
+
+.base-node--output .base-node__header {
+    background: var(--color-danger-light);
+    border-bottom-color: var(--color-node-output);
+}
+
+.base-node--output .base-node__icon {
+    color: var(--color-node-output);
+}
+
+.base-node--output .base-node__input:focus,
+.base-node--output .base-node__textarea:focus {
+    border-color: var(--color-node-output);
+}
+
+/* LLM NODE - Purple */
+.base-node--llm {
+    border-color: var(--color-node-llm);
+    --node-focus-color: #8B5CF6;
+}
+
+.base-node--llm .base-node__header {
+    background: #EDE9FE;
+    border-bottom-color: var(--color-node-llm);
+}
+
+.base-node--llm .base-node__icon {
+    color: var(--color-node-llm);
+}
+
+.base-node--llm .base-node__input:focus,
+.base-node--llm .base-node__textarea:focus {
+    border-color: var(--color-node-llm);
+}
+
+/* TEXT NODE - Blue */
+.base-node--text {
+    border-color: var(--color-node-text);
+    --node-focus-color: #3B82F6;
+}
+
+.base-node--text .base-node__header {
+    background: #DBEAFE;
+    border-bottom-color: var(--color-node-text);
+}
+
+.base-node--text .base-node__icon {
+    color: var(--color-node-text);
+}
+
+.base-node--text .base-node__input:focus,
+.base-node--text .base-node__textarea:focus {
+    border-color: var(--color-node-text);
+}
+
+/* TRANSLATION NODE - Amber */
+.base-node--translation {
+    border-color: var(--color-node-translation);
+    --node-focus-color: #F59E0B;
+}
+
+.base-node--translation .base-node__header {
+    background: var(--color-warning-light);
+    border-bottom-color: var(--color-node-translation);
+}
+
+.base-node--translation .base-node__icon {
+    color: var(--color-node-translation);
+}
+
+.base-node--translation .base-node__input:focus,
+.base-node--translation .base-node__textarea:focus {
+    border-color: var(--color-node-translation);
+}
+
+/* IMAGE GEN NODE - Pink */
+.base-node--imagegen {
+    border-color: var(--color-node-imagegen);
+    --node-focus-color: #EC4899;
+}
+
+.base-node--imagegen .base-node__header {
+    background: #FCE7F3;
+    border-bottom-color: var(--color-node-imagegen);
+}
+
+.base-node--imagegen .base-node__icon {
+    color: var(--color-node-imagegen);
+}
+
+.base-node--imagegen .base-node__input:focus,
+.base-node--imagegen .base-node__textarea:focus {
+    border-color: var(--color-node-imagegen);
+}
+
+/* EMOJI NODE - Yellow */
+.base-node--emoji {
+    border-color: var(--color-node-note);
+    --node-focus-color: #FBBF24;
+}
+
+.base-node--emoji .base-node__header {
+    background: #FEF3C7;
+    border-bottom-color: var(--color-node-note);
+}
+
+.base-node--emoji .base-node__icon {
+    color: var(--color-node-note);
+}
+
+.base-node--emoji .base-node__input:focus,
+.base-node--emoji .base-node__textarea:focus {
+    border-color: var(--color-node-note);
+}
+
+/* API NODE - Cyan */
+.base-node--api {
+    border-color: var(--color-node-api);
+    --node-focus-color: #06B6D4;
+}
+
+.base-node--api .base-node__header {
+    background: #CFFAFE;
+    border-bottom-color: var(--color-node-api);
+}
+
+.base-node--api .base-node__icon {
+    color: var(--color-node-api);
+}
+
+.base-node--api .base-node__input:focus,
+.base-node--api .base-node__textarea:focus {
+    border-color: var(--color-node-api);
+}
+
+/* FILTER NODE - Teal */
+.base-node--filter {
+    border-color: var(--color-node-filter);
+    --node-focus-color: #14B8A6;
+}
+
+.base-node--filter .base-node__header {
+    background: #CCFBF1;
+    border-bottom-color: var(--color-node-filter);
+}
+
+.base-node--filter .base-node__icon {
+    color: var(--color-node-filter);
+}
+
+.base-node--filter .base-node__input:focus,
+.base-node--filter .base-node__textarea:focus {
+    border-color: var(--color-node-filter);
+}

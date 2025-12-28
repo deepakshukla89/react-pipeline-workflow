@@ -1,0 +1,11 @@
+/* src/styles/index.css */
+/* Main entry point for all styles */
+
+/* Font Import */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+/* Style imports - order matters! */
+@import './variables.css';
+@import './reset.css';
+@import './app.css';
+@import './reactflow.css';
