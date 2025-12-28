@@ -1,11 +1,11 @@
 // textNode.js
 // Enhanced with dynamic variable detection and store sync
 
-import { useState, useEffect, useLayoutEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import { Handle, Position, useUpdateNodeInternals } from 'reactflow';
 import { FileText } from 'lucide-react';
 import { BaseNode } from './BaseNode';
-import { useStore } from '../store';
+import { useNodeField } from '../hooks/useNodeField';
 
 // Regex to extract valid JavaScript variable names from {{ variableName }} patterns
 const extractVariables = (text) => {
@@ -21,16 +21,19 @@ const extractVariables = (text) => {
 };
 
 export const TextNode = ({ id, data }) => {
-  const [currText, setCurrText] = useState(data?.text || '{{input}}');
+  // Use hook for text syncing
+  const [currText, handleTextChange] = useNodeField(id, 'text', data?.text || '{{input}}');
+
   const [variables, setVariables] = useState([]);
   const textareaRef = useRef(null);
   const updateNodeInternals = useUpdateNodeInternals();
-  const updateNodeField = useStore((state) => state.updateNodeField);
 
   // Extract variables whenever text changes
   useEffect(() => {
     const newVars = extractVariables(currText);
     setVariables(newVars);
+    // Note: We might want to sync variables to store too if needed specifically?
+    // But text update is enough for saving string.
   }, [currText]);
 
   // CRITICAL: Update node internals when handles change
@@ -45,12 +48,6 @@ export const TextNode = ({ id, data }) => {
       textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
     }
   }, [currText]);
-
-  const handleTextChange = useCallback((e) => {
-    const value = e.target.value;
-    setCurrText(value);
-    updateNodeField(id, 'text', value);
-  }, [id, updateNodeField]);
 
   // Calculate dynamic height for node based on variables count
   const minNodeHeight = Math.max(100, variables.length * 25 + 80);
@@ -69,7 +66,7 @@ export const TextNode = ({ id, data }) => {
         <textarea
           ref={textareaRef}
           value={currText}
-          onChange={handleTextChange}
+          onChange={(e) => handleTextChange(e.target.value)}
           className="base-node__textarea"
           placeholder="Enter text with {{ variables }}"
           style={{ minHeight: '60px' }}

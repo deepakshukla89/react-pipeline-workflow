@@ -1,38 +1,11 @@
-// src/config/constants.js
-// Centralized configuration constants
+// Application wide constants
 
-// Canvas & Grid
-export const GRID_SIZE = 40;
+export const GRID_SIZE = 16;
 export const SNAP_THRESHOLD = 8;
+export const NODE_WIDTH = 220;
+export const NODE_HEIGHT = 100;
 
-// Default node position range (for random placement)
-export const NODE_SPAWN = {
-    baseX: 300,
-    baseY: 200,
-    randomRangeX: 200,
-    randomRangeY: 100,
-};
-
-// Default node dimensions
-export const DEFAULT_NODE = {
-    width: 220,
-    height: 100,
-};
-
-// LocalStorage keys
-export const STORAGE_KEYS = {
-    WELCOMED: 'pipeline-builder-welcomed',
-};
-
-// Edge styling
-export const EDGE_STYLE = {
-    stroke: '#94A3B8',
-    strokeWidth: 2,
-};
-
-// Helper line styling
-export const HELPER_LINE_STYLE = {
-    stroke: '#F43F5E',
-    strokeWidth: 1.5,
-    strokeDasharray: '6,3',
-};
+export const INITIAL_NODE_POS_X = 300;
+export const INITIAL_NODE_POS_Y = 200;
+export const POS_RANDOMNESS_X = 200;
+export const POS_RANDOMNESS_Y = 100;

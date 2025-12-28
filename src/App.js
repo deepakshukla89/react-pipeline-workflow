@@ -1,11 +1,11 @@
 // App.js
 // Main application with Figma-style fullscreen layout
 
-import { PipelineUI } from './ui';
-import { FooterToolbar } from './FooterToolbar';
-import { ShortcutsHelp } from './ShortcutsHelp';
-import { WelcomeModal } from './WelcomeModal';
-import './index.css';
+import { PipelineUI } from './features/canvas/Canvas';
+import { FooterToolbar } from './components/layout/FooterToolbar';
+import { ShortcutsHelp } from './components/layout/ShortcutsHelp';
+import { WelcomeModal } from './components/modals/WelcomeModal';
+import './styles/index.css';
 
 function App() {
   return (

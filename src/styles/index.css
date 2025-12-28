@@ -1,11 +1,89 @@
-/* src/styles/index.css */
-/* Main entry point for all styles */
+/* index.css */
+/* Global styles - Figma-like fullscreen layout */
 
-/* Font Import */
+/* Import Plus Jakarta Sans from Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 
-/* Style imports - order matters! */
+/* Import Split CSS Files */
 @import './variables.css';
 @import './reset.css';
-@import './app.css';
-@import './reactflow.css';
+
+/* App Layout */
+.app {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+/* Pipeline Canvas - Fullscreen */
+.pipeline-canvas {
+    width: 100%;
+    height: 100%;
+    background: var(--color-bg-primary);
+    cursor: default;
+}
+
+.pipeline-canvas.panning-mode {
+    cursor: grab;
+}
+
+.pipeline-canvas.panning-mode:active {
+    cursor: grabbing;
+}
+
+/* React Flow Custom Styling */
+.react-flow__node {
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.react-flow__node.selected {
+    box-shadow: 0 0 0 2px var(--color-primary) !important;
+    border-radius: var(--radius-lg);
+}
+
+.react-flow__selection {
+    background: rgba(99, 102, 241, 0.08) !important;
+    border: 1px solid rgba(99, 102, 241, 0.4) !important;
+}
+
+.react-flow__edge-path {
+    stroke: #94A3B8 !important;
+    stroke-width: 2px;
+}
+
+.react-flow__connection-line {
+    stroke: #94A3B8 !important;
+    stroke-width: 2px;
+    stroke-dasharray: 5;
+}
+
+.react-flow__controls {
+    background: rgba(255, 255, 255, 0.9) !important;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    border-radius: var(--radius-md) !important;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08) !important;
+    padding: 4px !important;
+}
+
+.react-flow__controls-button {
+    background: transparent !important;
+    border: none !important;
+    border-radius: 6px !important;
+    fill: var(--color-text-secondary) !important;
+    width: 28px !important;
+    height: 28px !important;
+}
+
+.react-flow__controls-button:hover {
+    background: var(--color-bg-tertiary) !important;
+}
+
+.react-flow__minimap {
+    border-radius: var(--radius-md) !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.9) !important;
+    backdrop-filter: blur(8px);
+}

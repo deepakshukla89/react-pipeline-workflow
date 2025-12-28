@@ -1,11 +1,10 @@
 // apiCallNode.js
-// With store sync for payload
+// Refactored to use custom hooks and common components
 
-import { useState, useCallback } from 'react';
 import { Plug } from 'lucide-react';
 import { BaseNode } from './BaseNode';
-import { CustomSelect } from '../components/CustomSelect';
-import { useStore } from '../store';
+import { CustomSelect } from '../components/common/CustomSelect';
+import { useNodeField } from '../hooks/useNodeField';
 
 const methodOptions = [
     { value: 'GET', label: 'GET' },
@@ -16,20 +15,8 @@ const methodOptions = [
 ];
 
 export const APICallNode = ({ id, data }) => {
-    const [url, setUrl] = useState(data?.url || 'https://api.example.com');
-    const [method, setMethod] = useState(data?.method || 'GET');
-    const updateNodeField = useStore((state) => state.updateNodeField);
-
-    const handleUrlChange = useCallback((e) => {
-        const value = e.target.value;
-        setUrl(value);
-        updateNodeField(id, 'url', value);
-    }, [id, updateNodeField]);
-
-    const handleMethodChange = useCallback((value) => {
-        setMethod(value);
-        updateNodeField(id, 'method', value);
-    }, [id, updateNodeField]);
+    const [url, handleUrlChange] = useNodeField(id, 'url', data?.url || 'https://api.example.com');
+    const [method, handleMethodChange] = useNodeField(id, 'method', data?.method || 'GET');
 
     return (
         <BaseNode
@@ -48,7 +35,7 @@ export const APICallNode = ({ id, data }) => {
                 <input
                     type="text"
                     value={url}
-                    onChange={handleUrlChange}
+                    onChange={(e) => handleUrlChange(e.target.value)}
                     className="base-node__input"
                     placeholder="https://api.example.com"
                 />

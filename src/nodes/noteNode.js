@@ -1,12 +1,13 @@
 // noteNode.js
-// Simple sticky note for comments (no handles)
+// Simple sticky note for comments - now synced to store
 
-import { useState, useLayoutEffect, useRef } from 'react';
+import { useLayoutEffect, useRef } from 'react';
 import { StickyNote } from 'lucide-react';
 import { BaseNode } from './BaseNode';
+import { useNodeField } from '../hooks/useNodeField';
 
 export const NoteNode = ({ id, data }) => {
-    const [note, setNote] = useState(data?.note || 'Add your notes here...');
+    const [note, handleNoteChange] = useNodeField(id, 'note', data?.note || 'Add your notes here...');
     const textareaRef = useRef(null);
 
     // Auto-resize note
@@ -29,7 +30,7 @@ export const NoteNode = ({ id, data }) => {
             <textarea
                 ref={textareaRef}
                 value={note}
-                onChange={(e) => setNote(e.target.value)}
+                onChange={(e) => handleNoteChange(e.target.value)}
                 className="base-node__textarea"
                 placeholder="Add notes..."
                 style={{

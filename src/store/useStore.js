@@ -8,7 +8,7 @@ import {
   applyEdgeChanges,
   MarkerType,
 } from 'reactflow';
-import { getHelperLines } from './helperLines';
+import { getHelperLines } from '../features/canvas/utils/helperLines';
 
 export const useStore = create((set, get) => ({
   nodes: [],

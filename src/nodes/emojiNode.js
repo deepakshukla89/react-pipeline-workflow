@@ -1,11 +1,10 @@
 // emojiNode.js
-// With store sync for payload
+// Refactored to use custom hooks and common components
 
-import { useState, useCallback } from 'react';
 import { Smile } from 'lucide-react';
 import { BaseNode } from './BaseNode';
-import { CustomSelect } from '../components/CustomSelect';
-import { useStore } from '../store';
+import { CustomSelect } from '../components/common/CustomSelect';
+import { useNodeField } from '../hooks/useNodeField';
 
 const emojiOptions = [
     { value: '👍', label: '👍 Thumbs Up' },
@@ -23,13 +22,7 @@ const emojiOptions = [
 ];
 
 export const EmojiNode = ({ id, data }) => {
-    const [emoji, setEmoji] = useState(data?.emoji || '⭐');
-    const updateNodeField = useStore((state) => state.updateNodeField);
-
-    const handleEmojiChange = useCallback((value) => {
-        setEmoji(value);
-        updateNodeField(id, 'emoji', value);
-    }, [id, updateNodeField]);
+    const [emoji, handleEmojiChange] = useNodeField(id, 'emoji', data?.emoji || '⭐');
 
     return (
         <BaseNode

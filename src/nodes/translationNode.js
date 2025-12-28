@@ -1,11 +1,10 @@
 // translationNode.js
-// With store sync for payload
+// Refactored to use custom hooks and common components
 
-import { useState, useCallback } from 'react';
 import { Languages } from 'lucide-react';
 import { BaseNode } from './BaseNode';
-import { CustomSelect } from '../components/CustomSelect';
-import { useStore } from '../store';
+import { CustomSelect } from '../components/common/CustomSelect';
+import { useNodeField } from '../hooks/useNodeField';
 
 const languageOptions = [
     { value: 'Spanish', label: 'Spanish' },
@@ -17,13 +16,7 @@ const languageOptions = [
 ];
 
 export const TranslationNode = ({ id, data }) => {
-    const [targetLanguage, setTargetLanguage] = useState(data?.language || 'Spanish');
-    const updateNodeField = useStore((state) => state.updateNodeField);
-
-    const handleLanguageChange = useCallback((value) => {
-        setTargetLanguage(value);
-        updateNodeField(id, 'language', value);
-    }, [id, updateNodeField]);
+    const [targetLanguage, handleLanguageChange] = useNodeField(id, 'language', data?.language || 'Spanish');
 
     return (
         <BaseNode

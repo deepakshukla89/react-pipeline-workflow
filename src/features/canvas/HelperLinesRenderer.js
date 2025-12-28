@@ -2,7 +2,7 @@
 // Renders visual alignment guide lines with proper viewport transform
 
 import { useViewport } from 'reactflow';
-import { useStore } from './store';
+import { useStore } from '../../store/useStore';
 
 export const HelperLinesRenderer = () => {
     const horizontal = useStore((state) => state.helperLineHorizontal);

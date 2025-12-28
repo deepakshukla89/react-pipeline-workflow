@@ -1,11 +1,10 @@
 // inputNode.js
-// With store sync for payload
+// Refactored to use custom hooks and common components
 
-import { useState, useCallback } from 'react';
 import { Download } from 'lucide-react';
 import { BaseNode } from './BaseNode';
-import { CustomSelect } from '../components/CustomSelect';
-import { useStore } from '../store';
+import { CustomSelect } from '../components/common/CustomSelect';
+import { useNodeField } from '../hooks/useNodeField';
 
 const typeOptions = [
   { value: 'Text', label: 'Text' },
@@ -13,20 +12,17 @@ const typeOptions = [
 ];
 
 export const InputNode = ({ id, data }) => {
-  const [currName, setCurrName] = useState(data?.inputName || id.replace('customInput-', 'input_'));
-  const [inputType, setInputType] = useState(data?.inputType || 'Text');
-  const updateNodeField = useStore((state) => state.updateNodeField);
+  const [currName, handleNameChange] = useNodeField(
+    id,
+    'inputName',
+    data?.inputName || id.replace('customInput-', 'input_')
+  );
 
-  const handleNameChange = useCallback((e) => {
-    const value = e.target.value;
-    setCurrName(value);
-    updateNodeField(id, 'inputName', value);
-  }, [id, updateNodeField]);
-
-  const handleTypeChange = useCallback((value) => {
-    setInputType(value);
-    updateNodeField(id, 'inputType', value);
-  }, [id, updateNodeField]);
+  const [inputType, handleTypeChange] = useNodeField(
+    id,
+    'inputType',
+    data?.inputType || 'Text'
+  );
 
   return (
     <BaseNode
@@ -41,7 +37,7 @@ export const InputNode = ({ id, data }) => {
         <input
           type="text"
           value={currName}
-          onChange={handleNameChange}
+          onChange={(e) => handleNameChange(e.target.value)}
           className="base-node__input"
         />
       </div>

@@ -1,11 +1,10 @@
 // imageGenNode.js
-// With store sync for payload
+// Refactored to use custom hooks and common components
 
-import { useState, useCallback } from 'react';
 import { Image } from 'lucide-react';
 import { BaseNode } from './BaseNode';
-import { CustomSelect } from '../components/CustomSelect';
-import { useStore } from '../store';
+import { CustomSelect } from '../components/common/CustomSelect';
+import { useNodeField } from '../hooks/useNodeField';
 
 const modelOptions = [
     { value: 'DALL-E 3', label: 'DALL-E 3' },
@@ -20,19 +19,8 @@ const sizeOptions = [
 ];
 
 export const ImageGenNode = ({ id, data }) => {
-    const [model, setModel] = useState(data?.model || 'DALL-E 3');
-    const [size, setSize] = useState(data?.size || '1024x1024');
-    const updateNodeField = useStore((state) => state.updateNodeField);
-
-    const handleModelChange = useCallback((value) => {
-        setModel(value);
-        updateNodeField(id, 'model', value);
-    }, [id, updateNodeField]);
-
-    const handleSizeChange = useCallback((value) => {
-        setSize(value);
-        updateNodeField(id, 'size', value);
-    }, [id, updateNodeField]);
+    const [model, handleModelChange] = useNodeField(id, 'model', data?.model || 'DALL-E 3');
+    const [size, handleSizeChange] = useNodeField(id, 'size', data?.size || '1024x1024');
 
     return (
         <BaseNode

@@ -3,26 +3,27 @@
 
 import { useState, useRef, useCallback, useEffect } from 'react';
 import ReactFlow, { Controls, Background, MiniMap, ReactFlowProvider } from 'reactflow';
-import { useStore } from './store';
+import { useStore } from '../../store/useStore';
 import { shallow } from 'zustand/shallow';
 import { HelperLinesRenderer } from './HelperLinesRenderer';
 
 // Original Nodes
-import { InputNode } from './nodes/inputNode';
-import { LLMNode } from './nodes/llmNode';
-import { OutputNode } from './nodes/outputNode';
-import { TextNode } from './nodes/textNode';
+import { InputNode } from '../../nodes/inputNode';
+import { LLMNode } from '../../nodes/llmNode';
+import { OutputNode } from '../../nodes/outputNode';
+import { TextNode } from '../../nodes/textNode';
 
 // New Nodes
-import { TranslationNode } from './nodes/translationNode';
-import { ImageGenNode } from './nodes/imageGenNode';
-import { EmojiNode } from './nodes/emojiNode';
-import { APICallNode } from './nodes/apiCallNode';
-import { FilterNode } from './nodes/filterNode';
+import { TranslationNode } from '../../nodes/translationNode';
+import { ImageGenNode } from '../../nodes/imageGenNode';
+import { EmojiNode } from '../../nodes/emojiNode';
+import { APICallNode } from '../../nodes/apiCallNode';
+import { FilterNode } from '../../nodes/filterNode';
+import { NoteNode } from '../../nodes/noteNode';
 
 import 'reactflow/dist/style.css';
 
-const gridSize = 40;
+import { GRID_SIZE } from '../../config/constants';
 const proOptions = { hideAttribution: true };
 
 // Register all node types
@@ -36,6 +37,7 @@ const nodeTypes = {
   emoji: EmojiNode,
   apiCall: APICallNode,
   filter: FilterNode,
+  note: NoteNode,
 };
 
 const selector = (state) => ({
@@ -148,7 +150,7 @@ const FlowCanvas = () => {
         onInit={setReactFlowInstance}
         nodeTypes={nodeTypes}
         proOptions={proOptions}
-        snapGrid={[gridSize, gridSize]}
+        snapGrid={[GRID_SIZE, GRID_SIZE]}
         connectionLineType='smoothstep'
         panOnDrag={isPanning}
         selectionOnDrag={!isPanning}

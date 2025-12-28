@@ -1,11 +1,10 @@
 // filterNode.js
-// With store sync for payload
+// Refactored to use custom hooks and common components
 
-import { useState, useCallback } from 'react';
 import { Filter } from 'lucide-react';
 import { BaseNode } from './BaseNode';
-import { CustomSelect } from '../components/CustomSelect';
-import { useStore } from '../store';
+import { CustomSelect } from '../components/common/CustomSelect';
+import { useNodeField } from '../hooks/useNodeField';
 
 const conditionOptions = [
     { value: 'equals', label: 'Equals' },
@@ -16,20 +15,8 @@ const conditionOptions = [
 ];
 
 export const FilterNode = ({ id, data }) => {
-    const [condition, setCondition] = useState(data?.condition || 'equals');
-    const [value, setValue] = useState(data?.value || '');
-    const updateNodeField = useStore((state) => state.updateNodeField);
-
-    const handleConditionChange = useCallback((val) => {
-        setCondition(val);
-        updateNodeField(id, 'condition', val);
-    }, [id, updateNodeField]);
-
-    const handleValueChange = useCallback((e) => {
-        const val = e.target.value;
-        setValue(val);
-        updateNodeField(id, 'value', val);
-    }, [id, updateNodeField]);
+    const [condition, handleConditionChange] = useNodeField(id, 'condition', data?.condition || 'equals');
+    const [value, handleValueChange] = useNodeField(id, 'value', data?.value || '');
 
     return (
         <BaseNode
@@ -57,7 +44,7 @@ export const FilterNode = ({ id, data }) => {
                 <input
                     type="text"
                     value={value}
-                    onChange={handleValueChange}
+                    onChange={(e) => handleValueChange(e.target.value)}
                     className="base-node__input"
                     placeholder="Filter value..."
                 />

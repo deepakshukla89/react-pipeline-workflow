@@ -298,3 +298,23 @@
 .base-node--filter .base-node__textarea:focus {
     border-color: var(--color-node-filter);
 }
+
+/* NOTE NODE - Yellow */
+.base-node--note {
+    border-color: var(--color-node-note);
+    --node-focus-color: #FBBF24;
+}
+
+.base-node--note .base-node__header {
+    background: #FEF3C7;
+    border-bottom-color: var(--color-node-note);
+}
+
+.base-node--note .base-node__icon {
+    color: var(--color-node-note);
+}
+
+.base-node--note .base-node__input:focus,
+.base-node--note .base-node__textarea:focus {
+    border-color: var(--color-node-note);
+}
